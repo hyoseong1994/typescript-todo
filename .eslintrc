@@ -16,7 +16,7 @@
     "@typescript-eslint/no-var-requires": "error",
     "semi": "warn",
     "react/jsx-filename-extension": [0, { "extensions": ["js", "jsx"] }],
-    "arrow-parens": ["warn", "as-needed"],
+    "arrow-parens": "off",
     "no-console": "warn",
     "import/prefer-default-export": "off",
     "react-hooks/exhaustive-deps": "off",
