@@ -15,7 +15,7 @@ interface TodoObjInterface {
 
 const Todo: React.FC<TodoObjInterface> = ({ todo, onChangedChecked, onClickDelete }) => {
   return (
-    <StyledTodo>
+    <StyledTodo checked={todo.checked}>
       <input
         type='checkbox'
         name='checked'
@@ -28,7 +28,7 @@ const Todo: React.FC<TodoObjInterface> = ({ todo, onChangedChecked, onClickDelet
   );
 };
 
-const StyledTodo = styled.li`
+const StyledTodo = styled.li<{ checked: boolean }>`
   display: flex;
   padding: 10px;
   margin-bottom: 20px;
@@ -37,6 +37,10 @@ const StyledTodo = styled.li`
   border-radius: 10px;
   background-color: #fff;
   border: 1px solid #ddd;
+  span {
+    (props) => ;
+    ${(props) => props.checked && 'text-decoration: line-through'};
+  }
   button {
     height: 20px;
     background-color: #d96a6a;
