@@ -33,7 +33,7 @@ const StyledTodo = styled.li`
   padding: 10px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border-radius: 10px;
   background-color: #fff;
   border: 1px solid #ddd;
