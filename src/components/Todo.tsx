@@ -9,27 +9,42 @@ interface TodoInterface {
 interface TodoObjInterface {
   key: string;
   todo: TodoInterface;
+  onChangedChecked: (key: string, checked: boolean) => void;
+  onClickDelete: (key: string) => void;
 }
 
-const Todo: React.FC<TodoObjInterface> = ({ todo }) => {
+const Todo: React.FC<TodoObjInterface> = ({ todo, onChangedChecked, onClickDelete }) => {
   return (
     <StyledTodo>
-      <h3>{todo.title}</h3>
+      <input
+        type='checkbox'
+        name='checked'
+        checked={todo.checked}
+        onChange={(e) => onChangedChecked(todo.id, e.target.checked)}
+      />
+      <span>{todo.title}</span>
+      <button onClick={() => onClickDelete(todo.id)}>삭제</button>
     </StyledTodo>
   );
 };
 
 const StyledTodo = styled.li`
   display: flex;
-  height: 100px;
   padding: 10px;
   margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   border-radius: 10px;
   background-color: #fff;
   border: 1px solid #ddd;
+  button {
+    height: 20px;
+    background-color: #d96a6a;
+    border: 1px solid #683135;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+  }
   .score {
     display: flex;
   }

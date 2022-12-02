@@ -32,6 +32,7 @@ const CreateTodo: React.FC<CreateTodoInterface> = ({ create }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit} className='todo-area'>
+      <h1>할일 등록</h1>
       <div className='todo-add-box'>
         <label htmlFor='title'>Title</label>
         <input
@@ -57,10 +58,19 @@ const StyledForm = styled.form`
       margin-bottom: 4px;
     }
   }
+  input {
+    width: 100%;
+    text-indent: 8px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0;
+  }
   button {
     width: 100%;
     height: 40px;
-    background-color: #808080;
+    background-color: #6aa1d9;
+    border: 1px solid #314d68;
     border-radius: 10px;
     color: #fff;
     font-size: 15px;

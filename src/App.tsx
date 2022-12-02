@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import CreateTodo from './components/CreateTodo';
-import TodoList from './components/TodoList';
+import Todo from './components/Todo';
 
 const dumydata = [
   { id: '1', title: 'test1', checked: false },
@@ -9,7 +9,7 @@ const dumydata = [
   { id: '3', title: 'test3', checked: false },
 ];
 
-interface todoInterface {
+interface TodoInterface {
   id: string;
   title: string;
   checked: boolean;
@@ -17,15 +17,39 @@ interface todoInterface {
 function App() {
   const [todos, setTodos] = useState(dumydata);
 
-  const create = (newTodo: todoInterface) => {
-    const newTodoList: Array<todoInterface> = [...todos, newTodo];
+  const create = (newTodo: TodoInterface) => {
+    const newTodoList: Array<TodoInterface> = [...todos, newTodo];
     setTodos(newTodoList);
   };
+  const handleClickDelete = (id: string) => {
+    const newTodoList: Array<TodoInterface> = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodoList);
+  };
+  const handleChangeChecked = (id: string, checked: boolean) => {
+    const newTodoList: Array<TodoInterface> = todos.map((todo) =>
+      todo.id === id ? { ...todo, checked } : todo,
+    );
+    setTodos(newTodoList);
+  };
+
+  const sortedList = todos.sort((a: TodoInterface, b: TodoInterface) => (a.checked > b.checked ? -1 : 1));
 
   return (
     <StyledApp>
       <CreateTodo create={create} />
-      <TodoList todos={todos} />
+      <div className='todo-area'>
+        <h1>Todo List</h1>
+        <ul>
+          {sortedList.map((todo: TodoInterface) => (
+            <Todo
+              key={todo.id}
+              todo={todo}
+              onChangedChecked={handleChangeChecked}
+              onClickDelete={handleClickDelete}
+            />
+          ))}
+        </ul>
+      </div>
     </StyledApp>
   );
 }
@@ -41,15 +65,6 @@ const StyledApp = styled.div`
   h3 {
     font-size: 14px;
     margin-top: 0;
-  }
-  input,
-  select {
-    width: 100%;
-    text-indent: 8px;
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 0;
   }
   ul {
     list-style: none;
