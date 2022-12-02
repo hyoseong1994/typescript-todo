@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
-
-interface todoInterface {
-  id: string;
-  title: string;
-  checked: boolean;
-}
+import { TodoInterface } from '../types';
 interface CreateTodoInterface {
-  create: (todo: todoInterface) => void;
+  create: (todo: TodoInterface) => void;
 }
 
 const CreateTodo: React.FC<CreateTodoInterface> = ({ create }) => {

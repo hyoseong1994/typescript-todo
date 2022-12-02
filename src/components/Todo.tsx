@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-interface TodoInterface {
-  id: string;
-  title: string;
-  checked: boolean;
-}
+import { TodoInterface } from '../types';
 interface TodoObjInterface {
   key: string;
   todo: TodoInterface;

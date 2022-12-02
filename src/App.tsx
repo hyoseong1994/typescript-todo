@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import CreateTodo from './components/CreateTodo';
 import Todo from './components/Todo';
+import { TodoInterface } from './types';
 
 const dumydata = [
   { id: '1', title: 'test1', checked: false },
@@ -9,11 +10,6 @@ const dumydata = [
   { id: '3', title: 'test3', checked: false },
 ];
 
-interface TodoInterface {
-  id: string;
-  title: string;
-  checked: boolean;
-}
 function App() {
   const [todos, setTodos] = useState(dumydata);
 
