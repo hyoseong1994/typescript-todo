@@ -32,7 +32,7 @@ function App() {
     setTodos(newTodoList);
   };
 
-  const sortedList = todos.sort((a: TodoInterface, b: TodoInterface) => (a.checked > b.checked ? -1 : 1));
+  const sortedList = todos.sort((a: TodoInterface, b: TodoInterface) => (a.checked > b.checked ? 1 : -1));
 
   return (
     <StyledApp>
